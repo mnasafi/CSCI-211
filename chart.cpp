@@ -23,16 +23,16 @@ main()
     }
 cout<<"graph:\n";
 //display 
-  for(int row=0; large>row; row++)//row
+  for(int row=large; 0<row; row--)//row
     {
       for(int col=0; numbers[col]; col++)//colum
         {
-        if(row==numbers[col])
+        if(row<=numbers[col])
           cout<<"*";
         else
           cout<<" ";
         }
-        cout<<endl;
+      cout<<endl;
     }
 /*
 //display down, side left to right
