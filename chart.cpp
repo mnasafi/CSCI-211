@@ -54,8 +54,13 @@ main()
 //display 3, side left to right
   for(int row=0; numbers[row]>0; row++)
     {
-      for(int col=0; numbers[row]>col; col++)//outputs * based on number
-        cout<<"*";
+      for(int col=0; large>col; col++)//outputs * based on number
+        {
+         if(numbers[row]>col)
+           cout<<"*";
+         else
+           cout<<" ";
+        }
       cout<<endl;
     }
   
@@ -73,10 +78,6 @@ main()
         }
       cout<<endl;
     }
-  
-  cout<<endl;
-
-
 
   return 0;  
 }
