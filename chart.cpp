@@ -21,7 +21,7 @@ main()
       if(large<numbers[i])//finds largest number input
         large=numbers[i];
     }
-cout<<"graph:\n";
+
 //display 
   for(int row=large; 0<row; row--)//row
     {
@@ -45,9 +45,7 @@ cout<<"graph:\n";
   
   cout<<endl;
 */
-
-  return 0;
-  
+  return 0;  
 }
 
 
