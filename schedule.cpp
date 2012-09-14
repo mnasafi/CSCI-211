@@ -7,7 +7,7 @@
 #include "course.h"
 using namespace std;
 
-main()
+int main()
 {
   Course programming("CSCI",211,1000);
   Course english("ENGL",130,1400);
