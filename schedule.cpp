@@ -4,37 +4,19 @@
 
 
 #include <iostream>
-#include <course.h>
+#include "course.h"
 using namespace std;
 
 main()
 {
-  int i, even=1;
-  bool q;
-  
-  while(cin>>i)
-  {
-    q=i%2;
-    
-    switch(q)
-    {
-      case 1:
-        //not even
-        even=0;
-        break;
-      case 0:
-        //even
-        break;
-      default:
-        cout<<"something went wrong\n";
-        break;
-    
-    }
-  }
-    if(even==0){ cerr<<"not all even\n";    return 1;}
-    else
-      cout<<"all even\n";
-  
+  Course programming("CSCI",211,1000);
+  Course english("ENGL",130,1400);
+  Course physics("PHYS",204,800);
+
+  programming.print();
+  english.print();
+  physics.print();
+
   return 0;  
 }
 

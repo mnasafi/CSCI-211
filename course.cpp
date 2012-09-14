@@ -8,16 +8,11 @@
 
 void Course::print(void)
 {
-  
-  
+  cout<<dept<<" "<<number<<" at "<<time<<endl;
 }
     
     
-Course::Course(string d, int n, int t)
+Course::Course(string d, int n, int t) : dept(d), number(n), time(t)
 {
-  dept = d;
-  number = n;
-  time = t;
 }  
-
 
