@@ -10,14 +10,14 @@ using namespace std;
 int main()
 {
   string sort_type, title, url, comment;
-  int videos[100];
+  Video* videos[100];
   int rating;
   float length;
   
 
-  cin>>sort_type;
-  
-  for(int i=0; i<100; i++)
+  getline(cin, sort_type);
+  cout<<"sort type: "<<sort_type<<endl;
+  for(int i=0; i<10; i++)
     {
       while(getline(cin, title));
       while(getline(cin, url));
@@ -25,9 +25,14 @@ int main()
       cin>>length>>rating;
       cin.ignore();
       
+      cout<<"input recieved\ntitle: "<<title<<"\nURL: "<<url<<endl;
+
       videos[i] = new Video(title, url, comment, length, rating);
       
     }
+
+  videos[0]->print();
+
 /*  
   switch(sort_type)
     {
