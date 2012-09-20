@@ -17,18 +17,14 @@ int main()
 
   getline(cin, sort_type);
   cout<<"sort type: "<<sort_type<<endl;
-
-//  for(int i=0; i<10; i++)
-//    {
-      while(getline(cin, title));
-      {
-        getline(cin, url);
-        getline(cin, comment);
-        cin>>length>>rating;
-        cin.ignore();
       
-      cout<<"input recieved\ntitle: "<<title<<"\nURL: "<<url<<endl;
-
+  while(getline(cin, title))
+    {
+      getline(cin, url);
+      getline(cin, comment);
+      cin>>length>>rating;
+      cin.ignore();
+      
       videos[i] = new Video(title, url, comment, length, rating);
       i++;
     }
