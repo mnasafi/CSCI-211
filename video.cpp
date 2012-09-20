@@ -20,3 +20,11 @@ Video::Video(string t, string u, string c, float l, int r) : title(t), url(u), c
 {
 }  
 
+
+bool Video::longer(Video *other)
+{
+  return length > other->length;
+}
+
+
+

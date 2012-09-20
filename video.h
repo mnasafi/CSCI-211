@@ -20,7 +20,7 @@ class Video
   public:
     void print(void);
     Video(string t, string u, string c, float l, int r);
-  
+    bool longer(Video *other);
 };
 
 #endif
