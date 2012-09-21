@@ -15,16 +15,14 @@ int main()
   float length;
   
   //input
-  while(getline(cin, sort_type))
+  getline(cin, sort_type);
+    
+  if(sort_type != "rating" || sort_type != "length" || sort_type != "title")
     {
-      if(sort_type != "rating" || sort_type != "length" || sort_type != "length")
-   //   if(sort_type == "rating" || "length" ||"title")
- 
-        {
-          cerr<<sort_type<<" is not a legal sorting method, giving up.";
-          return 1;
-        }
+       cerr<<sort_type<<" is not a legal sorting method, giving up.\n";
+       return 1;
     }
+  
       
   while(getline(cin, title))
     {
