@@ -17,7 +17,7 @@ int main()
   //input
   getline(cin, sort_type);
     
-  if(sort_type != "rating" || sort_type != "length" || sort_type != "title")
+  if(sort_type != "rating" && sort_type != "length" && sort_type != "title")
     {
        cerr<<sort_type<<" is not a legal sorting method, giving up.\n";
        return 1;
@@ -32,9 +32,9 @@ int main()
       cin.ignore();
       videos[i] = new Video(title, url, comment, length, rating);
       i++;
-      if (i>99)
+      if (i>100)
         {
-          cerr<<"Too many videos, giving up.";
+          cerr<<"Too many videos, giving up.\n";
           return 1;
         }
     }
