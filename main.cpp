@@ -11,11 +11,20 @@ int main()
 {
   string sort_type, title, url, comment;
   Video* videos[100];
-  int rating, i=0, total;
+  int rating, i=0;
   float length;
   
   //input
-  getline(cin, sort_type);
+  while(getline(cin, sort_type))
+    {
+      if(sort_type != "rating" || sort_type != "length" || sort_type != "length")
+   //   if(sort_type == "rating" || "length" ||"title")
+ 
+        {
+          cerr<<sort_type<<" is not a legal sorting method, giving up.";
+          return 1;
+        }
+    }
       
   while(getline(cin, title))
     {
@@ -31,7 +40,7 @@ int main()
           return 1;
         }
     }
-  total = i;
+  int num_videos = i;
 
   //sort
   if (sort_type=="rating")
@@ -41,7 +50,7 @@ int main()
           for(int cur = 0; cur<last; cur++)
             {
               if(videos[cur]->rated(videos[cur+1]))
-                swap(videos[cur], videos[cur+1]);
+                swap(videos[cur+1], videos[cur]);
             }
         }
     }
@@ -51,7 +60,7 @@ int main()
          {
            for(int cur = 0; cur<last; cur++)
              {
-               if(videos[cur]->longest(videos[cur+1]))
+               if(videos[cur]->longer(videos[cur+1]))
                  swap(videos[cur], videos[cur+1]);
              }
          }
@@ -70,7 +79,7 @@ int main()
       
     }
  
-  for(i=0;i<total;i++)
+  for(i=0;i<num_videos;i++)
     videos[i]->print();
 
   return 0;

@@ -21,6 +21,8 @@ class Video
     void print(void);
     Video(string t, string u, string c, float l, int r);
     bool longer(Video *other);
+    bool rated(Video *other);
+    bool alpha(Video *other);
 };
 
 #endif

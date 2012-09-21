@@ -29,12 +29,11 @@ bool Video::longer(Video *other)
 
 bool Video::rated(Video *other)
 {
-  return rating > other->rating;
+  return rating < other->rating;
 }
 
 
 bool Video::alpha(Video *other)
 {
-  
-  
+  return title > other->title;
 }
