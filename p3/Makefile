@@ -1,18 +1,15 @@
-#makefile for lab 4
+# Makefile for 211 p3 assignment
+vlist: video.o main.o vlist.o
+	g++ -Wall -pedantic -g -o vlist video.o main.o vlist.o
 
-#final output
-videos: video.o main.o
-	g++ -Wall -pedantic -g -o videos video.o main.o
-
-#file 1
-main.o: main.cpp video.h
+main.o: main.cpp video.h vlist.h
 	g++ -Wall -pedantic -g -c main.cpp
 
-#file 2
-video.o: video.cpp video.h
-	g++ -Wall -pedantic -g -c video.cpp 
+video.o: video.h video.cpp
+	g++ -Wall -pedantic -g -c video.cpp
 
-#clean .o files
+vlist.o: vlist.h vlist.cpp
+	g++ -Wall -pedantic -g -c vlist.cpp
+
 clean:
-	rm -f main.o video.o
-
+	rm -f video.o main.o vlist.o vlist vlist.exe
