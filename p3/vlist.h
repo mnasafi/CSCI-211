@@ -1,9 +1,9 @@
-//video.h
+//vlist.h
 //elberling, Ace
 //elberling
 
-#ifndef _VIDEO_H_
-#define _VIDEO_H_
+#ifndef _VLIST_H_
+#define _VLIST_H_
 
 #include <iostream>
 #include <string>
