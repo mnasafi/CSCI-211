@@ -21,9 +21,12 @@ class Vlist
           Video *m_video
           Node *m_next;
       }
+
+    Node *m_head;
   public:
+    Vlist(): m_head(NULL){}
     void print();
-    void insert();
+    void insert(Video *video);
     void length();
     void lookup(string title);
     void remove(string title);

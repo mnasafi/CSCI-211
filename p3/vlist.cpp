@@ -12,10 +12,14 @@ void Vlist::print()
 }
     
     
-void Vlist::insert()
+void Vlist::insert(Video *video)
 {
-  //insert item into video stack
-  //return nothing
+  if(m_head==NULL)
+    m_head = new Node(video, m_head);
+  else if(m_head->m_video->alpha(*video)) //if true video is before m_head in alpha
+    m_head = new Node(video, m_head);
+  
+    
 }
 
 
