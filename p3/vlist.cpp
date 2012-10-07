@@ -6,13 +6,9 @@
 #include <iostream>
 #include <string>
 
-void Vlist::print(void)
+void Vlist::print()
 {
-  cout<<title<<", "<<url<<", "<<comment<<", "<<length<<", ";
-  for(int i=0; i<rating; i++)
-    cout<<"*";
-  
-  cout<<endl;
+  m_video.print();
 }
     
     

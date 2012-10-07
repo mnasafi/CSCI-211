@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
   string sort_type, title, url, comment, command;
-  Video* videos[100];
+  Video* video;
   int rating, i=0;
   float length;
   
@@ -32,8 +32,8 @@ int main()
         getline(cin, comment);
         cin>>length>>rating;
         cin.ignore();
-         = new Video(title, url, comment, length, rating);
- 
+        video = new Video(title, url, comment, length, rating);
+        
         
         
       }
