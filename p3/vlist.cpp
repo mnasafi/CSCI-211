@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 
-void Video::print(void)
+void Vlist::print(void)
 {
   cout<<title<<", "<<url<<", "<<comment<<", "<<length<<", ";
   for(int i=0; i<rating; i++)
@@ -16,24 +16,29 @@ void Video::print(void)
 }
     
     
-Video::Video(string t, string u, string c, float l, int r) : title(t), url(u), comment(c), rating(r), length(l)
+void Vlist::insert()
 {
-}  
-
-
-bool Video::longer(Video *other)
-{
-  return length > other->length;
+  //insert item into video stack
+  //return nothing
 }
 
 
-bool Video::rated(Video *other)
+void Vlist::length()
 {
-  return rating < other->rating;
+  //print number of videos in list
+  //return nothing
 }
 
 
-bool Video::alpha(Video *other)
+void Vlist::lookup(string title)
 {
-  return title > other->title;
+  //if given title is in video list, print it
+  //return nothing
+}
+
+void Vlist::remove(string title)
+{
+  //if title is in list, remove it
+  //return nothing
+  
 }

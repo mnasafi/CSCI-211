@@ -10,19 +10,23 @@
 
 using namespace std;
 
-class Video
+class Vlist
 {
   private:
-    int rating;
-    float length;
-    string sort, title, url, comment;
-    
+    class Node
+      {
+        public:
+          Node(, Node *next)
+          {;m_next = next;}
+
+          Node *m_next;
+      }
   public:
     void print(void);
-    Video(string t, string u, string c, float l, int r);
-    bool longer(Video *other);
-    bool rated(Video *other);
-    bool alpha(Video *other);
+    void insert();
+    void length();
+    void lookup(string title);
+    void remove(string title);
 };
 
 #endif

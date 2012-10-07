@@ -5,14 +5,39 @@
 #include <iostream>
 #include <string>
 #include "video.h"
+#include "vlist.h"
 using namespace std;
 
 int main()
 {
-  string sort_type, title, url, comment;
+  string sort_type, title, url, comment, command;
   Video* videos[100];
   int rating, i=0;
   float length;
+  
+  //command
+  while(getline(cin, command))
+    {
+
+    if(command != "insert" && command != "length" && command != "lookup" && command != "print" && command != "remove")
+      {
+         cerr<<command<<" is not a legal command, giving up.\n";
+         return 1;
+      }
+    
+    if(command == "insert")
+      {
+        getline(cin, title)
+        getline(cin, url);
+        getline(cin, comment);
+        cin>>length>>rating;
+        cin.ignore();
+         = new Video(title, url, comment, length, rating);
+ 
+        
+        
+      }
+    }
   
   //input
   getline(cin, sort_type);
@@ -40,6 +65,10 @@ int main()
     }
   int num_videos = i;
 
+
+
+
+/*
   //sort
   if (sort_type=="rating")
     {
@@ -79,6 +108,7 @@ int main()
  
   for(i=0;i<num_videos;i++)
     videos[i]->print();
+*/
 
   return 0;
   
