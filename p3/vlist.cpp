@@ -74,7 +74,10 @@ int Vlist::lookup(string title)
   for (Node *current = m_head; current !=NULL; current = current->m_next)
   {
     if(current->m_video->get_title() == title)
-      current->m_video->print();
+      {
+        current->m_video->print();
+        return 0;
+      }
     else if(current->m_next==NULL)
       return 1;
   }
@@ -87,6 +90,7 @@ int Vlist::remove(string title)
   Node *ptr;
   if(m_head == NULL)
     return 1;
+  cout<<title<<" is the title that we are looking for.\n";
   if(m_head->m_video->get_title() == title)
   {
     ptr=m_head->m_next;

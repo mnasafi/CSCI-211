@@ -22,7 +22,7 @@ int main()
 
     if(command != "insert" && command != "length" && command != "lookup" && command != "print" && command != "remove")
       {
-         cerr<<command<<" is not a legal command, giving up.\n";
+         cerr<<"<"<<command<<"> is not a legal command, giving up.\n";
          return 1;
       }
     
