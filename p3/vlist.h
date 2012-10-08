@@ -21,6 +21,7 @@ class Vlist
           {m_video = video;m_next = next;}
           Video *m_video;
           Node *m_next;
+          ~Node(){delete m_video;}
       };
 
     Node *m_head;

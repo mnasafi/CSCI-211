@@ -84,7 +84,28 @@ int Vlist::lookup(string title)
 
 int Vlist::remove(string title)
 {
-  //if title is in list, remove it
+  Node *ptr;
+  if(m_head == NULL)
+    return 1;
+  if(m_head->m_video->get_title() == title)
+  {
+    ptr=m_head->m_next;
+    delete m_head;
+    m_head = ptr;
+  }
+  for (Node *current = m_head; current !=NULL; current = current->m_next)
+  {
+    if(current->m_next->m_video->get_title() == title)
+      {
+        ptr=current->m_next;
+        delete current;
+        current = ptr;
+      }
+    else if(current->m_next==NULL)
+      return 1;
+  }
+
+
   return 0;
   
 }
