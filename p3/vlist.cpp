@@ -23,22 +23,35 @@ void Vlist::print()
 int Vlist::insert(Video *video)
 { 
   if(m_head==NULL)
+  {
     m_head = new Node(video, NULL);
+    cout<<"insert if 1\n";
+  }
   else if(m_head->m_video->get_title() == video->get_title())//checking if node title already exists
   {
+    cout<<"insert else if 1\n";
     return 1; //error checking
   }
   else if(m_head->m_video->alpha(video)) //if true video is before m_head in alpha
+  {  
+    cout<<"insert else if 2\n"<<;
     m_head = new Node(video, m_head);
-  else
+  }
+  else 
   {
+    cout<<"insert else before for\n";
+    
     for (Node *current = m_head; current !=NULL; current = current->m_next)
     {
+      cout<<"insert else after for\n";
       if(m_head->m_video->get_title() == video->get_title() || m_head->m_next->m_video->get_title() == video->get_title())
+      {
+        cout<<"insert else after for inside error check\n";
         return 1; //error checking
-      
+      }
       if(current->m_next != NULL)
       {
+        cout<<"insert else after for inside if 1\n";
         if(!current->m_video->alpha(video) && current->m_next->m_video->alpha(video)) //if current is before && next is after, then put inbetween
         {
           Node *ptr = new Node(video, current->m_next);
