@@ -34,7 +34,6 @@ int main()
         cin>>length>>rating;
         cin.ignore();
         video = new Video(title, url, comment, length, rating);
-        cout<<"the title pushed into insert is :"<<title<<endl;
         if(vlist->insert(video)==1)
           {
             cerr<<"Could not insert video <"<<title<<">, already in list.\n";
