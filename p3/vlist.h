@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include "video.h"
 
 using namespace std;
 

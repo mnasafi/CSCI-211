@@ -8,14 +8,19 @@
 
 void Vlist::print()
 {
-  m_video.print();
+  Node *ptr = m_head;
+  while(ptr!=NULL)
+  {
+    ptr->m_video-> print();
+    ptr = ptr->m_next;
+  }
 }
     
     
 void Vlist::insert(Video *video)
 {
   if(m_head==NULL)
-    m_head = new Node(video, m_head);
+    m_head = new Node(video, NULL);
   else if(m_head->m_video->alpha(video)) //if true video is before m_head in alpha
     m_head = new Node(video, m_head);
   else
