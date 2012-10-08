@@ -27,10 +27,10 @@ class Vlist
   public:
     Vlist(): m_head(NULL){}
     void print();
-    void insert(Video *video);
-    void length();
-    void lookup(string title);
-    void remove(string title);
+    int insert(Video *video);
+    int length();
+    int lookup(string title);
+    int remove(string title);
 };
 
 #endif

@@ -23,6 +23,7 @@ class Video
     bool longer(Video *other);
     bool rated(Video *other);
     bool alpha(Video *other);
+    string get_title();
 };
 
 #endif

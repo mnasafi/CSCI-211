@@ -12,7 +12,7 @@ int main()
 {
   string sort_type, title, url, comment, command;
   Video* video;
-  Vlist* vlist;
+  Vlist* vlist = new Vlist();
   int rating;
   float length;
   
@@ -29,13 +29,16 @@ int main()
     if(command == "insert")
       {
         getline(cin, title);
-        cout<<"title = "<<title<<endl;
         getline(cin, url);
         getline(cin, comment);
         cin>>length>>rating;
         cin.ignore();
         video = new Video(title, url, comment, length, rating);
-        vlist->insert(video);
+        if(vlist->insert(video)==1)
+          {
+            cerr<<"Could not insert video "<<title<<", already in list.\n";
+            return 1;
+          }
       }
     if(command == "print")
       {

@@ -37,3 +37,8 @@ bool Video::alpha(Video *other)
 {
   return title > other->title;
 }
+
+string Video::get_title()
+{
+  return title;
+}
