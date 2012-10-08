@@ -55,7 +55,7 @@ int Vlist::length()
 {
   int length=0;
   if(m_head == NULL)
-    return 0;
+    return length;
   else
   {
     for (Node *current = m_head; current !=NULL; current = current->m_next)
@@ -69,7 +69,16 @@ int Vlist::length()
 
 int Vlist::lookup(string title)
 {
-  //if given title is in video list, print it
+  if(m_head == NULL)
+    return 1;
+  for (Node *current = m_head; current !=NULL; current = current->m_next)
+  {
+    if(current->m_video->get_title() == title)
+      current->m_video->print();
+    else if(current->m_next==NULL)
+      return 1;
+  }
+
   return 0;
 }
 

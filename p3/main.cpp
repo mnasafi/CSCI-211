@@ -44,7 +44,27 @@ int main()
       {
         vlist->print();
       }
-        
+    if(command == "length")
+      {
+         cout<<vlist->length()<<endl; 
+      }
+    if(command == "lookup")
+      {
+        getline(cin, title);
+        if(vlist->lookup(title)==1)
+          {
+            cerr<<"Title "<<title<<" not in list.\n";
+          }
+      }
+    if(command == "remove")
+      {
+        getline(cin, title);
+        if(vlist->remove(title)==1)
+          {
+            cerr<<"Title "<<title<<" not in list, could not delete.\n";
+          }
+ 
+      }
         
     }
 
