@@ -36,7 +36,7 @@ int main()
         video = new Video(title, url, comment, length, rating);
         if(vlist->insert(video)==1)
           {
-            cerr<<"Could not insert video "<<title<<", already in list.\n";
+            cerr<<"Could not insert video <"<<title<<">, already in list.\n";
             return 1;
           }
       }
@@ -53,7 +53,7 @@ int main()
         getline(cin, title);
         if(vlist->lookup(title)==1)
           {
-            cerr<<"Title "<<title<<" not in list.\n";
+            cerr<<"Title <"<<title<<"> not in list.\n";
           }
       }
     if(command == "remove")
@@ -61,7 +61,7 @@ int main()
         getline(cin, title);
         if(vlist->remove(title)==1)
           {
-            cerr<<"Title "<<title<<" not in list, could not delete.\n";
+            cerr<<"Title <"<<title<<"> not in list, could not delete.\n";
           }
  
       }

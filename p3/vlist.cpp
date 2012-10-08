@@ -24,7 +24,7 @@ int Vlist::insert(Video *video)
 { 
   if(m_head==NULL)
     m_head = new Node(video, NULL);
-  else if(m_head->m_video->get_title() == video->get_title())
+  else if(m_head->m_video->get_title() == video->get_title())//checking if node title already exists
   {
     return 1; //error checking
   }
@@ -45,6 +45,8 @@ int Vlist::insert(Video *video)
           current->m_next = ptr;
         }
       }
+      else
+        current->m_next = new Node(video, NULL);
     }
   }
   return 0;
@@ -90,7 +92,6 @@ int Vlist::remove(string title)
   Node *ptr;
   if(m_head == NULL)
     return 1;
-  cout<<title<<" is the title that we are looking for.\n";
   if(m_head->m_video->get_title() == title)
   {
     ptr=m_head->m_next;
@@ -99,15 +100,15 @@ int Vlist::remove(string title)
   }
   for (Node *current = m_head; current !=NULL; current = current->m_next)
   {
-    if(current->m_next->m_video->get_title() == title)
+    if(current->m_next==NULL)
+      return 1;
+    else if(current->m_next->m_video->get_title() == title)
       {
         ptr=current->m_next;
         delete current;
         current = ptr;
       }
-    else if(current->m_next==NULL)
-      return 1;
-  }
+ }
 
 
   return 0;
