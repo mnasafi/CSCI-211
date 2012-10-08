@@ -16,9 +16,19 @@ void Vlist::insert(Video *video)
 {
   if(m_head==NULL)
     m_head = new Node(video, m_head);
-  else if(m_head->m_video->alpha(*video)) //if true video is before m_head in alpha
+  else if(m_head->m_video->alpha(video)) //if true video is before m_head in alpha
     m_head = new Node(video, m_head);
-  
+  else
+  {
+    for (Node *current = m_head; current !=NULL; current = current->m_next)
+    {
+      if(current->m_video->alpha(video))
+      {
+        Node *ptr = new Node(video, current->m_next);
+
+      }
+    }
+  }
     
 }
 
