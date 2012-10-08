@@ -39,21 +39,24 @@ int Vlist::insert(Video *video)
   {
     for (Node *current = m_head; current !=NULL; current = current->m_next)
     {
-      if(m_head->m_video->get_title() == video->get_title() || m_head->m_next->m_video->get_title() == video->get_title())
+     if(current->m_next != NULL)
       {
-        return 1; //error checking
-      }
-      if(current->m_next != NULL)
-      {
+        if(current->m_video->get_title() == video->get_title() || current->m_next->m_video->get_title() == video->get_title())
+        {
+          return 1; //error checking
+        }
+ 
         if(!current->m_video->alpha(video) && current->m_next->m_video->alpha(video)) //if current is before && next is after, then put inbetween
         {
           Node *ptr = new Node(video, current->m_next);
           current->m_next = ptr;
+          return 0;
         }
       }
       else
       {
         current->m_next = new Node(video, NULL);
+        return 0;
       }
     }
   }
@@ -105,6 +108,7 @@ int Vlist::remove(string title)
     ptr=m_head->m_next;
     delete m_head;
     m_head = ptr;
+    return 0;
   }
   for (Node *current = m_head; current !=NULL; current = current->m_next)
   {
@@ -115,6 +119,7 @@ int Vlist::remove(string title)
         ptr=current->m_next;
         current->m_next = ptr->m_next;
         delete ptr;
+        return 0;
       }
  }
 
