@@ -27,7 +27,7 @@ int main()
     
     if(command == "insert")
       {
-        getline(cin, title)
+        getline(cin, title);
         getline(cin, url);
         getline(cin, comment);
         cin>>length>>rating;
@@ -38,7 +38,7 @@ int main()
         
       }
     }
-  
+/*  
   //input
   getline(cin, sort_type);
     
@@ -67,8 +67,6 @@ int main()
 
 
 
-
-/*
   //sort
   if (sort_type=="rating")
     {

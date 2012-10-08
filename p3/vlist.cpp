@@ -22,10 +22,13 @@ void Vlist::insert(Video *video)
   {
     for (Node *current = m_head; current !=NULL; current = current->m_next)
     {
-      if(current->m_video->alpha(video))
+      if(current->m_next != NULL)
       {
-        Node *ptr = new Node(video, current->m_next);
-
+        if(!current->m_video->alpha(video) && current->m_next->m_video->alpha(video))
+        {
+          Node *ptr = new Node(video, current->m_next);
+          current->m_next = ptr;
+        }
       }
     }
   }

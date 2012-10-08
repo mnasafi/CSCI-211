@@ -18,9 +18,9 @@ class Vlist
         public:
           Node(Video *video, Node *next)
           {m_video = video;m_next = next;}
-          Video *m_video
+          Video *m_video;
           Node *m_next;
-      }
+      };
 
     Node *m_head;
   public:
