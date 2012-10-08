@@ -29,12 +29,13 @@ int Vlist::insert(Video *video)
   }
   else if(m_head->m_video->get_title() == video->get_title())//checking if node title already exists
   {
-    cout<<"insert else if 1\n";
+    cout<<"insert, else if 1\n";
     return 1; //error checking
   }
   else if(m_head->m_video->alpha(video)) //if true video is before m_head in alpha
   {  
-    cout<<"insert else if 2\n"<<;
+
+    cout<<"insert, else if 2\ntitle pushed in:"<<video->get_title()<<"\ntitle in m_video :"<<m_head->m_video->get_title()<<endl;
     m_head = new Node(video, m_head);
   }
   else 
