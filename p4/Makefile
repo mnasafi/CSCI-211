@@ -1,11 +1,11 @@
-reverse: reverse.o dstack.o
-	g++ -Wall -pedantic -g -o reverse reverse.o dstack.o
+Calc: calc.o dstack.o
+	g++ -Wall -g -pedantic -o calc calc.o dstack.o
 
 dstack.o: dstack.h dstack.cpp
-	g++ -Wall -pedantic -g -c dstack.cpp
+	g++ -Wall -g -pedantic -c dstack.cpp
 
-reverse.o: dstack.h reverse.cpp
-	g++ -Wall -pedantic -g -c reverse.cpp
+reverse.o: dstack.h calc.cpp
+	g++ -Wall -g -pedantic -c calc.cpp
 
 clean:
-	rm -f reverse reverse.exe reverse.o dstack.o
+	rm -f calc calc.exe calc.o dstack.o
