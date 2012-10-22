@@ -17,8 +17,8 @@ void error()
 
 int main()
 {
-    double value;
-    char oper;
+    double value, left, right;
+    char oper, num[256];
     Dstack stack;
 
     // as long as there is input
@@ -26,8 +26,8 @@ int main()
     {
       if(isdigit(cin.peek()))
       {
-        cin>>value;
-        stack.push(value);
+        cin>>num;
+        stack.push(atof(num));
       }
       else if (isspace(cin.peek()))
         cin.ignore();
@@ -37,12 +37,36 @@ int main()
         switch(oper)
         {
           case '+':
+            right = stack.pop();
+            left = stack.pop();
+            value = left + right;
+            stack.push(value);
             break;
           case '-':
+            right = stack.pop();
+            left = stack.pop();
+            value = left - right;
+            cout<<left<<" - "<<right<<" = "<<value<<endl;
+            stack.push(value); 
             break;
           case '*':
+            right = stack.pop();
+            left = stack.pop();
+            value = left * right;
+            stack.push(value);
             break;
           case '/':
+            right = stack.pop();
+            left = stack.pop();
+            value = left / right;
+            stack.push(value);
+            break;
+          case '^':
+            right = stack.pop();
+            left = stack.pop();
+            value = left / right;
+            stack.push(value);
+            
             break;
           default:
             error();
@@ -51,10 +75,15 @@ int main()
         }
       }
       
-    }  
+    }
     // as long as the stack is not empty, pop numbers and print them
     while (!stack.empty())
-      cout << stack.pop() << endl;
+    {
+      if(stack->m_head->m_next==NULL)
+        cout << stack.pop() << endl;
+      else
+        error();
+    }
 
     return 0;
 }
