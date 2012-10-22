@@ -4,7 +4,7 @@ Calc: calc.o dstack.o
 dstack.o: dstack.h dstack.cpp
 	g++ -Wall -g -pedantic -c dstack.cpp
 
-reverse.o: dstack.h calc.cpp
+calc.o: dstack.h calc.cpp
 	g++ -Wall -g -pedantic -c calc.cpp
 
 clean:

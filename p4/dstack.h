@@ -28,9 +28,9 @@ class Dstack
   public:
     Dstack(): m_head(NULL){}
     void push(double value);
-    double pop();
+    double pop(bool &full);
     bool empty();
-    //~Dstack(){delete ???
+    ~Dstack(){delete m_head}
 };
 
 #endif

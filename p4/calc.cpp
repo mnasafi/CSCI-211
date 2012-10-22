@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cmath>
+#include <string.h>
 using namespace std;
 #include "dstack.h"
 
@@ -18,17 +19,21 @@ void error()
 
 int main()
 {
-    double value, left, right;
+    double value, left, right, tnum;
     char oper, num[256], temp[256];
+    bool full;
     Dstack stack;
 
+    if(cin.peek() == EOF)
+      error();
     // as long as there is input
     while (cin.peek() != EOF)
     {
       if(isdigit(cin.peek()))
       {
-        cin>>num;
-        stack.push(atof(num));
+        cin>>tnum;
+        //cout<<"inside if isdigit tnum ="<<tnum<<endl;
+        stack.push(tnum);
       }
       else if (isspace(cin.peek()))
         cin.ignore();
@@ -37,46 +42,74 @@ int main()
       else if (ispunct(cin.peek()))
       {
         cin>>oper;
+        //cout<<"inside else if punct oper ="<<oper<<endl;
+        
         switch(oper)
         {
           case '+':
-            right = stack.pop();
-            left = stack.pop();
+            right = stack.pop(full);
+            if(!full)
+              error();
+            left = stack.pop(full);
+            if(!full)
+              error();
             value = left + right;
             stack.push(value);
             break;
           case '-':
-            right = stack.pop();
-            left = stack.pop();
-            value = left - right;
-            cout<<left<<" - "<<right<<" = "<<value<<endl;
+            right = stack.pop(full);
+            if(!full)
+              error();
+            left = stack.pop(full);
+            if(!full)
+              error();
+           value = left - right;
+            //cout<<left<<" - "<<right<<" = "<<value<<endl;
             stack.push(value); 
             break;
           case '*':
-            right = stack.pop();
-            left = stack.pop();
+            right = stack.pop(full);
+            if(!full)
+              error();
+            left = stack.pop(full);
+            if(!full)
+              error();
             value = left * right;
             stack.push(value);
             break;
           case '/':
-            right = stack.pop();
-            left = stack.pop();
+            right = stack.pop(full);
+            if(!full)
+              error();
+            left = stack.pop(full);
+            if(!full)
+              error();
+            if(right == 0)
+              error();
             value = left / right;
             stack.push(value);
             break;
           case '^':
-            right = stack.pop();
-            left = stack.pop();
+            right = stack.pop(full);
+            if(!full)
+              error();
+            left = stack.pop(full);
+            if(!full)
+              error();
             value = pow(left,right);
             stack.push(value);
             break;
           case '.':
-            if(ispunct(cin.peek()))
-              break;
-            cin>>num;
-            strcpy(temp,".");
-            strcat(temp,num);
-            stack.push(atof(temp));
+            if(isdigit(cin.peek()))
+            {
+              cin>>num;
+              //cout<<"inside . case, num="<<num<<endl;;
+              strcpy(temp,".");
+              strcat(temp,num);
+              stack.push(atof(temp));
+            }
+            else if(isspace(cin.peek()))
+              error();
             break;
           default:
             error();
@@ -90,13 +123,11 @@ int main()
     // as long as the stack is not empty, pop numbers and print them
     while (!stack.empty())
     {
-      
-      
       if(i>0)
         error();
       else
       {
-        value = stack.pop();
+        value = stack.pop(full);
         i++;
       }
     }
