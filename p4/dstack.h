@@ -30,7 +30,7 @@ class Dstack
     void push(double value);
     double pop(bool &full);
     bool empty();
-    ~Dstack(){delete m_head}
+    ~Dstack(){delete m_head;}
 };
 
 #endif

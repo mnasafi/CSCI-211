@@ -22,7 +22,7 @@ int main()
     double value, left, right, tnum;
     char oper, num[256], temp[256];
     bool full;
-    Dstack stack;
+    Dstack *stack = new Dstack();
 
     if(cin.peek() == EOF)
       error();
@@ -133,6 +133,6 @@ int main()
     }
     
     cout << value << endl;
-
+    delete &stack;
     return 0;
 }
