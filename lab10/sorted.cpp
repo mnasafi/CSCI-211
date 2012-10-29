@@ -5,8 +5,10 @@ using namespace std;
 bool is_array_sorted(int values[], int size)
 {
     assert(size > 0);
-    // replace this will the real code...
-    return true;
+    if(size == 1)
+      return true;
+    
+    return (values[0]<=values[1] && is_array_sorted(values+1, size-1));
 
 }
 

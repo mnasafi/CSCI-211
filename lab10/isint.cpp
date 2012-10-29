@@ -5,8 +5,13 @@ using namespace std;
 
 bool is_int(char str[])
 {
-    
-    return true;
+    if(str[0]==NULL || !isdigit(str[0]))
+      return false;
+    if(str[1]==NULL) //if the next spot is the end of the array
+      return true;
+      
+    return is_int(str+1);
+
 
 }
 
