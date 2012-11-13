@@ -18,42 +18,63 @@ int main(int argc, char *argv[])
     // argc tells us how many command line arguments were given
     // "1" means that no command line arguments were given
     // The first argument is the name of the executable
-  if (argc != 3)//should get # of checkers, input file, output file
+  if (argc != 4)//should get # of checkers, input file, output file. 1 + # of command inputs
   {
     cerr << "Error: invalid number of command line arguments.\n";
     return 1;
   }
 
-  if(argv[1] >= 1)
-    int checker = argv[1];
+  if(atoi(argv[1]) > 0)
+    int checker = atoi(argv[1]);
   else
   {
     cerr << "Error: invalid number of checkers specified.\n";
+    return 1;
   }
-    // open the file specified in argv[1].  
-    // The "ios::in" opens the file in read mode.
-  ifstream inFile(argv[2], ios::in);
-                                                                                
-  ofstream  outFile(argv[3], ios::out);  // filename is a string holding the filename
 
+//Input file & error check  
+  ifstream inFile(argv[2], ios::in);
     // the in file is an ifstream object connected with the given filename
     // if the contructor failed (could not open file) then !infile returns true
     // THE ! OPERATOR HAS BEEN OVER WRITTEN FOR THE IFSTREAM CLASS
   if (!inFile)
   {
-    cerr << "Error: could not open input file <" << argv[1] << ">.\n";
+    cerr << "Error: could not open input file <" << argv[2] << ">.\n";
     return 1;
   }
 
+//output file & error check
+  ofstream  outFile(argv[3], ios::out);  // filename is a string holding the filename
   if (!outFile)
   {
-    cerr << "Error: could not open output file <" << argv[2] << ">.\n";
+    cerr << "Error: could not open output file <" << argv[3] << ">.\n";
     return 1;
   }
   
-  //
+//SETUP INPUT
+  string name, type, buffer;
+  int a_time, items, clock = 1;
   
   
+  //while(getline(inFile, buffer, ' ')!=false)
+  while(inFile.good())
+  {
+    getline(inFile, name, ' ');
+    getline(inFile, type, ' ');
+    getline(inFile, buffer, ' ');
+    a_time = atoi(buffer);
+    getline(inFile, buffer, ' ');
+    items = atoi(buffer);
+    //name = inFile.get(streambuf& buffer, ' ');
+    //type = inFile.get(streambuf& buffer, ' ');
+  }
+  
+  //inFile<<name<<type<<a_time<<items;
+
+  cout<<name;
+  cout<<type;
+
+//  
   
   return 0;
 }
