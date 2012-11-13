@@ -52,28 +52,18 @@ int main(int argc, char *argv[])
   }
   
 //SETUP INPUT
-  string name, type, buffer;
+  string name, type;
   int a_time, items, clock = 1;
   
   
-  //while(getline(inFile, buffer, ' ')!=false)
-  while(inFile.good())
+  while(!inFile.eof())
   {
-    getline(inFile, name, ' ');
-    getline(inFile, type, ' ');
-    getline(inFile, buffer, ' ');
-    a_time = atoi(buffer);
-    getline(inFile, buffer, ' ');
-    items = atoi(buffer);
-    //name = inFile.get(streambuf& buffer, ' ');
-    //type = inFile.get(streambuf& buffer, ' ');
+    inFile>>name>>type>>a_time>>items>>ws;
+    
+    Cust *temp = new Cust(name, type, a_time, items);
+    temp->print();
   }
   
-  //inFile<<name<<type<<a_time<<items;
-
-  cout<<name;
-  cout<<type;
-
 //  
   
   return 0;
