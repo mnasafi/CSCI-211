@@ -16,7 +16,7 @@ class Cust
     int a_time, items;
     
   public:
-    //void print(void);
+    void print(void);
     Cust(string n,string t,int a,int i) : name(n), type(t), a_time(a), items(i){}
 };
 
