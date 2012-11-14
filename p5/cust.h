@@ -18,6 +18,7 @@ class Cust
   public:
     void print(void);
     Cust(string n,string t,int a,int i) : name(n), type(t), a_time(a), items(i){}
+    bool arrival(Cust *cust);
 };
 
 #endif

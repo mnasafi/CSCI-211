@@ -23,12 +23,15 @@ class Pqueue
         Node *m_next;
         ~Node(){delete m_cust;}
     };
-    Mode *m_head;
+
+    Node *m_head;
+  
   public:
-    Pqueue():m_head(NULL){}
+    Pqueue(): m_head(NULL){}
     void enque(Cust *cust);
-    Cust *dequeue();
+    Cust *deque();
+    void print();
   
 };
 
-
+#endif

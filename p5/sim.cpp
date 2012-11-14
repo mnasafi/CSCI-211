@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
   
 //SETUP INPUT
   string name, type;
-  int a_time, items, clock = 1;
+  int a_time, items, clock = 1, num_customers = 0;
   
   
   while(!inFile.eof())
@@ -62,6 +62,7 @@ int main(int argc, char *argv[])
     
     Cust *temp = new Cust(name, type, a_time, items);
     temp->print();
+    num_customers++;
   }
   
 //  
