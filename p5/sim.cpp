@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void run_simulation(Pqueue &arrival_q, int checker, int customers, ostream &os);
+void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os);
  
 
 int main(int argc, char *argv[])
@@ -81,9 +81,20 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
   Cust **checkers = new Cust *[checker];
   int *register_totals = new int [checker];
   
+  for(int i=0; i<checker; i++)
+  {  
+    register_totals[i] = 100;
+    checkers[i]= NULL;
+  }
+
   for(int clock = 1; customers > 0; clock++)
   {
-    
+    for(Pqueue *ptr = arrival_q;ptr!=NULL; ptr=ptr->m_next)
+    {
+      if(ptr->m_cust->entered(os, clock))
+        cout<<"yep\n";
+      
+    }
     
     
   }
