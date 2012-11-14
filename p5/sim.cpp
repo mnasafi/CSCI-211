@@ -7,21 +7,26 @@
 #include<string>
 #include<assert.h>
 #include "cust.h"
+#include "pqueue.h"
 
 using namespace std;
+
+void run_simulation(Pqueue &arrival_q, int checker, int customers, ostream &os);
+ 
 
 int main(int argc, char *argv[])
 {
   //SETUP  ERROR CHECKING
-  
+  int checker;
+
   if (argc != 4)//should get # of checkers, input file, output file. 1 + # of command inputs
   {
     cerr << "Error: invalid number of command line arguments.\n";
     return 1;
   }
 
-  if(atoi(argv[1]) > 0)
-    int checker = atoi(argv[1]);
+  if(argv[1] > 0)
+    checker = atoi(argv[1]);
   else
   {
     cerr << "Error: invalid number of checkers specified.\n";
@@ -46,9 +51,9 @@ int main(int argc, char *argv[])
   
 //SETUP INPUT
   string name, type;
-  int a_time, items, clock = 1, num_customers = 0;
+  int a_time, items,  num_customers = 0;
   
-  //Pqueue *arrival_q = new Pqueue();
+  Pqueue *arrival_q = new Pqueue();
   
   while(!inFile.eof())
   {
@@ -56,16 +61,17 @@ int main(int argc, char *argv[])
     
     Cust *temp = new Cust(name, type, a_time, items);
     temp->print();
-    //arrival_q->enque(temp);
+    arrival_q->enque(temp);
     num_customers++;
   }
-  
-//  
+  cout<<"# of checkers="<<checker<<endl;
+//RUN SIMULATION
+  run_simulation(arrival_q, checker, num_customers, outFile);
   
   return 0;
 }
 
-
-
+void run_simulation(Pqueue &arrival_q, int checker, int customers, ostream &os)
+ 
 
 

@@ -17,7 +17,7 @@ void Pqueue::print()
   while(ptr!=NULL)
   {
     ptr->m_cust->print();
-    ptr = prt->m_next;
+    ptr = ptr->m_next;
   }
   
 }
