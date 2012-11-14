@@ -70,14 +70,23 @@ int main(int argc, char *argv[])
   //arrival_q->print();
 
 //RUN SIMULATION
- // run_simulation(arrival_q, checker, num_customers, outFile);
+  run_simulation(arrival_q, checker, num_customers, outFile);
   
   return 0;
 }
 
-void run_simulation(Pqueue &arrival_q, int checker, int customers, ostream &os)
+void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
 {
   
+  Cust **checkers = new Cust *[checker];
+  int *register_totals = new int [checker];
+  
+  for(int clock = 1; customers > 0; clock++)
+  {
+    
+    
+    
+  }
   
   
 } 
