@@ -62,17 +62,46 @@ void Pqueue::enque(Cust *cust)
 
 Cust *Pqueue::deque(int time)
 {
+  if(m_head==NULL)
+    return NULL;
   if(m_head->m_cust->is_time(time))
   {
     Node *ptr = m_head;
     m_head = m_head->m_next;
     return ptr->m_cust;
   }
-  return false;
+  return NULL;
 }
 
+void Pqueue::push(Cust *cust)
+{
+  if(m_head==NULL)
+    m_head= new Node(cust, NULL);
+  else
+  {
+    for(Node *ptr = m_head; ptr->m_next!=NULL; ptr=ptr->m_next)
+    {
+      if (ptr->m_next==NULL)
+      {
+        ptr->m_next= new Node(cust, NULL);
+        break;
+      }
+    }
+  }
+  
+}
 
-
-
+Cust *Pqueue::pop()
+{
+  if(m_head ==NULL)
+    return NULL;
+  else
+  {
+    Node *ptr = m_head;
+    m_head = m_head->m_next;
+    return ptr->m_cust;
+  }
+  
+}
 
 

@@ -31,6 +31,8 @@ class Pqueue
     void enque(Cust *cust);
     Cust *deque(int time);
     void print();
+    void push(Cust *cust);
+    Cust *pop();
   
 };
 

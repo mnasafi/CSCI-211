@@ -6,6 +6,8 @@
 #include<fstream>
 #include<string>
 #include<assert.h>
+#include<stdio.h>
+#include<stdlib.h>
 #include "cust.h"
 #include "pqueue.h"
 
@@ -96,19 +98,26 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
     
     if(Cust *temp =arrival_q->deque(clock))
     {
-      cout<<clock<<": if arrival\n";
+      //cout<<clock<<": if arrival\n";
       temp->entered(os, clock);
       shopping_q->enque(temp);
       //customers--;
     }
-    else if(Cust *temp1=shopping_q->deque(clock))
+    else if(shopping_q!=NULL)
     {
-      cout<<clock<<": else if shopping\n";
-      temp1->done_shop(os, clock);
-      checker_q->enque(temp1);
-      customers--;
+      if(Cust *temp=shopping_q->deque(clock))
+      {
+        //cout<<clock<<": else if shopping\n";
+        temp->done_shop(os, clock);
+        checker_q->push(temp);
+        customers--;
+      }
     }
-    
+    /*else if(checker_q!=NULL)
+    {
+      for()
+      if(Cust *temp=checker_q->pop())
+    }*/
     
     
     //arrival_q->print();
