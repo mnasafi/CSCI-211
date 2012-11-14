@@ -21,7 +21,7 @@ class Pqueue
          {m_cust = cust;m_next = next;
         Cust *m_cust;
         Node *m_next;
-        ~Node(){delete m_cust;}
+       // ~Node(){delete m_cust;}
     };
 
     Node *m_head;

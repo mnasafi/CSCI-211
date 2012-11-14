@@ -14,10 +14,6 @@ int main(int argc, char *argv[])
 {
   //SETUP  ERROR CHECKING
   
-    // make sure a filename was specified on the command line
-    // argc tells us how many command line arguments were given
-    // "1" means that no command line arguments were given
-    // The first argument is the name of the executable
   if (argc != 4)//should get # of checkers, input file, output file. 1 + # of command inputs
   {
     cerr << "Error: invalid number of command line arguments.\n";
@@ -34,9 +30,6 @@ int main(int argc, char *argv[])
 
 //Input file & error check  
   ifstream inFile(argv[2], ios::in);
-    // the in file is an ifstream object connected with the given filename
-    // if the contructor failed (could not open file) then !infile returns true
-    // THE ! OPERATOR HAS BEEN OVER WRITTEN FOR THE IFSTREAM CLASS
   if (!inFile)
   {
     cerr << "Error: could not open input file <" << argv[2] << ">.\n";
@@ -55,6 +48,7 @@ int main(int argc, char *argv[])
   string name, type;
   int a_time, items, clock = 1, num_customers = 0;
   
+  //Pqueue *arrival_q = new Pqueue();
   
   while(!inFile.eof())
   {
@@ -62,6 +56,7 @@ int main(int argc, char *argv[])
     
     Cust *temp = new Cust(name, type, a_time, items);
     temp->print();
+    //arrival_q->enque(temp);
     num_customers++;
   }
   
