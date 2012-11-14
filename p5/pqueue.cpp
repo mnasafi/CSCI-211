@@ -60,12 +60,19 @@ void Pqueue::enque(Cust *cust)
   }
 }
 
-Cust *Pqueue::deque()
+Cust *Pqueue::deque(int time)
 {
-  //temp_cust
-  return 0;
-  //return temp_cust;
+  if(m_head->m_cust->is_time(time))
+  {
+    Node *ptr = m_head;
+    m_head = m_head->m_next;
+    return ptr->m_cust;
+  }
+  return false;
 }
+
+
+
 
 
 

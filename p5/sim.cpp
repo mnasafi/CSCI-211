@@ -80,23 +80,39 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
   
   Cust **checkers = new Cust *[checker];
   int *register_totals = new int [checker];
-  
+  Pqueue *shopping_q = new Pqueue;
+  Pqueue *checker_q = new Pqueue;
+
   for(int i=0; i<checker; i++)
   {  
     register_totals[i] = 100;
     checkers[i]= NULL;
   }
-
+  
+  
   for(int clock = 1; customers > 0; clock++)
   {
-    for(Pqueue *ptr = arrival_q;ptr!=NULL; ptr=ptr->m_next)
+    //cout<<"current time is "<<clock<<endl;
+    
+    if(Cust *temp =arrival_q->deque(clock))
     {
-      if(ptr->m_cust->entered(os, clock))
-        cout<<"yep\n";
-      
+      cout<<clock<<": if arrival\n";
+      temp->entered(os, clock);
+      shopping_q->enque(temp);
+      //customers--;
+    }
+    else if(Cust *temp1=shopping_q->deque(clock))
+    {
+      cout<<clock<<": else if shopping\n";
+      temp1->done_shop(os, clock);
+      checker_q->enque(temp1);
+      customers--;
     }
     
     
+    
+    //arrival_q->print();
+    //shopping_q->print();
   }
   
   

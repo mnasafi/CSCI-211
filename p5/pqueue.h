@@ -29,7 +29,7 @@ class Pqueue
   public:
     Pqueue(): m_head(NULL){}
     void enque(Cust *cust);
-    Cust *deque();
+    Cust *deque(int time);
     void print();
   
 };

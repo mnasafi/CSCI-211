@@ -29,6 +29,7 @@ void Cust::entered(ostream & os, int clock)
 {
   assert(clock == a_time);
   os << clock <<": "<<name<<" entered store\n";
+  a_time = a_time + items;
 }
 
 void Cust::done_shop(ostream & os, int clock)
@@ -59,4 +60,12 @@ void Cust::leaving(ostream & os, int clock,int checker, int cash)
   os<<" entered store\n";
   
 }
+
+bool Cust::is_time(int time)
+{
+  cout<<a_time<<" "<<time<<endl;
+  return a_time == time;}
+
+
+
 
