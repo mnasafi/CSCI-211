@@ -19,6 +19,7 @@ class Cust
     void print(void);
     Cust(string n,string t,int a,int i) : name(n), type(t), a_time(a), items(i){}
     bool arrival(Cust *cust);
+    bool arrival_eq(Cust *cust);
     void entered(ostream & os, int clock);
     void done_shop(ostream & os, int clock);
     void checkout(ostream & os, int clock, int checker);

@@ -53,17 +53,23 @@ int main(int argc, char *argv[])
   string name, type;
   int a_time, items,  num_customers = 0;
   
-  Pqueue arrival_q;
+  Pqueue *arrival_q = new Pqueue;
   
   while(!inFile.eof())
   {
     inFile>>name>>type>>a_time>>items>>ws;
     
     Cust *temp = new Cust(name, type, a_time, items);
-    arrival_q.enque(temp);
+    arrival_q->enque(temp);
+    
+    arrival_q->print();
+    cout<<endl;
     num_customers++;
+    cout<<"number of customers="<<num_customers<<endl;
   }
-  cout<<"# of checkers="<<checker<<endl;
+
+  arrival_q->print();
+
 //RUN SIMULATION
  // run_simulation(arrival_q, checker, num_customers, outFile);
   

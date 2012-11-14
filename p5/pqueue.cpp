@@ -24,6 +24,8 @@ void Pqueue::print()
 
 void Pqueue::enque(Cust *cust)
 {
+  cout<<"into enque\n";
+  
   if(m_head==NULL)//empty
   {
     m_head = new Node(cust, NULL);
@@ -32,21 +34,26 @@ void Pqueue::enque(Cust *cust)
   {  
     m_head = new Node(cust, m_head);
   }
+  else if(m_head->m_next == NULL)
+    m_head->m_next= new Node(cust, NULL);
   else 
   {
-    for (Node *current = m_head; current !=NULL; current = current->m_next)
+    for (Node *current = m_head->m_next; current !=NULL; current = current->m_next)
     {
-      if(current->m_next != NULL)
+      cout<<"m_next ="<<current->m_next<<endl;
+      if(current->m_next == NULL)
       {
-        if(!current->m_cust->arrival(cust) && current->m_next->m_cust->arrival(cust)) //if current is before && next is after, then put inbetween
+        current->m_next = new Node(cust, NULL);
+      }
+      else if(!current->m_cust->arrival(cust) && current->m_next->m_cust->arrival(cust)) //if current is before && next is after, then put inbetween
         {
           Node *ptr = new Node(cust, current->m_next);
           current->m_next = ptr;
         }
-      }
-      else
+      
+      else if(current->m_cust->arrival(cust))
       {
-        current->m_next = new Node(cust, NULL);
+        current->m_next = new Node(cust, current->m_next);
       }
     }
   }
