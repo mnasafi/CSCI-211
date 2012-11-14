@@ -62,13 +62,12 @@ int main(int argc, char *argv[])
     Cust *temp = new Cust(name, type, a_time, items);
     arrival_q->enque(temp);
     
-    arrival_q->print();
-    cout<<endl;
+    //arrival_q->print();
     num_customers++;
-    cout<<"number of customers="<<num_customers<<endl;
+    //cout<<"number of customers="<<num_customers<<endl;
   }
 
-  arrival_q->print();
+  //arrival_q->print();
 
 //RUN SIMULATION
  // run_simulation(arrival_q, checker, num_customers, outFile);

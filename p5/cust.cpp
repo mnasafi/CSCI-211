@@ -14,7 +14,7 @@ void Cust::print(void)
 
 bool Cust::arrival(Cust *other)
 {
-  cout<<"in arrival\n current cust="<<name<<" current time="<<a_time<<endl<<"other cust="<<other->name<<" other time="<<other->a_time<<endl;
+  //cout<<"in arrival\n current cust="<<name<<" current time="<<a_time<<endl<<"other cust="<<other->name<<" other time="<<other->a_time<<endl;
 
   
   return a_time > other->a_time;
