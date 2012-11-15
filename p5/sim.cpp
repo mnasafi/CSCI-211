@@ -28,7 +28,13 @@ int main(int argc, char *argv[])
   }
 
   if(argv[1] > 0)
-    checker = atoi(argv[1]);
+  {
+      checker = atoi(argv[1]);
+    if(checker == 0)
+    {cerr << "Error: invalid number of checkers specified.\n";
+    return 1;}
+ 
+  }
   else
   {
     cerr << "Error: invalid number of checkers specified.\n";
@@ -69,7 +75,7 @@ int main(int argc, char *argv[])
     //cout<<"number of customers="<<num_customers<<endl;
   }
 
-  //arrival_q->print();
+  arrival_q->print();
 
 //RUN SIMULATION
   run_simulation(arrival_q, checker, num_customers, outFile);
@@ -96,6 +102,26 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
   for(int clock = 1; customers > 0; clock++)
   {
     cout<<"current time is "<<clock<<endl;
+
+    for(int i=0; i< checker; i++)
+    {
+      //cout<<"inside checker for loop\n";
+      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
+      {
+        checkers[i]->leaving(os, clock, i, register_totals[i]);
+        checkers[i]=NULL;
+        customers--;
+      }
+    }
+/*      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
+      {
+        customers--;
+        //int cash = register_totals[i];
+        checkers[i]->leaving(os, clock, i, register_totals[i]);
+        //register_totals[i] = cash + register_totals[i];
+        checkers[i]=NULL;
+      }*/
+
     
     while(Cust *temp =arrival_q->deque(clock))
     {
@@ -113,30 +139,15 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
       //customers--;
     }
 
-
     for(int i=0; i< checker; i++)
     {
-      //cout<<"inside checker for loop\n";
       Cust *temp=NULL;
-      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
-      {
-        checkers[i]->leaving(os, clock, i, register_totals[i]);
-        checkers[i]=NULL;
-        customers--;
-      }
       if(checkers[i]==NULL && (temp=checker_q->pop())!=NULL)//checks to see if checker is empty and if there is something to pop
       {
         temp->checkout(os, clock, i);
         checkers[i]=temp;
       }
-/*      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
-      {
-        customers--;
-        //int cash = register_totals[i];
-        checkers[i]->leaving(os, clock, i, register_totals[i]);
-        //register_totals[i] = cash + register_totals[i];
-        checkers[i]=NULL;
-      }*/
+
     }
 //TEST AND SUCH
     cout<<"\narrival:\n";

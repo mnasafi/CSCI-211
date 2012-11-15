@@ -50,11 +50,13 @@ void Pqueue::enque(Cust *cust)
         {
           Node *ptr = new Node(cust, current->m_next);
           current->m_next = ptr;
+          break;
         }
       
       else if(current->m_cust->arrival_eq(cust))
       {
         current->m_next = new Node(cust, current->m_next);
+        break;
       }
     }
   }
