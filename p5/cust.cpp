@@ -47,21 +47,37 @@ void Cust::checkout(ostream & os, int clock, int checker)
   os << clock <<": "<<name<<" started checkout with checker "<<checker<<endl;
 }
 
-void Cust::leaving(ostream & os, int clock,int checker, int cash)
+void Cust::leaving(ostream & os, int clock,int checker, int &cash)
 {
   assert(clock == a_time);
   os << clock <<": "<<name;
   if(type == "robber")
   {
+    cout<<"robber cash="<<cash<<endl;
     os<<"stole $"<<cash<<" and "<<items;
     if(items == 1)
       os<<" item ";
     else
       os<<" items ";
     os<<"from checker "<<checker<<endl;
+    cash = 0;
+    cout<<"after:"<<cash<<endl;
   }
-  os<<" entered store\n";
-  
+  else if(type == "shopper")
+  {
+    os<<" paid $"<<(items * 3)<<" for "<<items;
+    if(items == 1)
+      os<<" item ";
+    else
+      os<<" items ";
+    os<<"to checker "<<checker<<endl;
+    cash = cash + (items * 3);
+  }
+  else
+  {
+    cout<<name<<" broke something\n";
+  os<<" store broke\n";
+  }
 }
 
 bool Cust::is_time(int time)

@@ -104,6 +104,7 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
       shopping_q->enque(temp);
       //customers--;
     }
+
     while(Cust *temp=shopping_q->deque(clock))
     {
       cout<<clock<<": else if shopping\n";
@@ -111,29 +112,44 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
       checker_q->push(temp);
       //customers--;
     }
+
+
     for(int i=0; i< checker; i++)
     {
-      cout<<"inside checker for loop\n";
+      //cout<<"inside checker for loop\n";
       Cust *temp=NULL;
-      if(checkers[i]==NULL && (temp=checker_q->pop())!=NULL)
+      if(checkers[i]==NULL && (temp=checker_q->pop())!=NULL)//checks to see if checker is empty and if there is something to pop
       {
         temp->checkout(os, clock, i);
         checkers[i]=temp;
+        //customers--;
+      }
+      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
+      {
         customers--;
+        //int cash = register_totals[i];
+        checkers[i]->leaving(os, clock, i, register_totals[i]);
+        //register_totals[i] = cash + register_totals[i];
+        checkers[i]=NULL;
       }
     }
+//TEST AND SUCH
     cout<<"\narrival:\n";
     arrival_q->print();
     cout<<"shopping:\n";
     shopping_q->print();
+    cout<<"checker:\n";
+    checker_q->print();
     cout<<"Num of cust="<<customers<<endl;
     cout<<endl;
-   if(clock>100)
+   if(clock>80)
      break; 
- 
-
   }
-  
+  for(int i=0; i<checker; i++)
+  {
+    os<<"registers["<<i<<"] = $"<<register_totals[i]<<endl;
+    cout<<"registers["<<i<<"] = $"<<register_totals[i]<<endl;
+  }
   
 } 
 

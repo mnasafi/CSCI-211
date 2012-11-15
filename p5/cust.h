@@ -24,7 +24,7 @@ class Cust
     void entered(ostream & os, int clock);
     void done_shop(ostream & os, int clock);
     void checkout(ostream & os, int clock, int checker);
-    void leaving(ostream & os, int clock, int checker, int cash);
+    void leaving(ostream & os, int clock, int checker, int &cash);
 };
 
 #endif
