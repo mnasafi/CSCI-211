@@ -118,20 +118,25 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
     {
       //cout<<"inside checker for loop\n";
       Cust *temp=NULL;
+      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
+      {
+        checkers[i]->leaving(os, clock, i, register_totals[i]);
+        checkers[i]=NULL;
+        customers--;
+      }
       if(checkers[i]==NULL && (temp=checker_q->pop())!=NULL)//checks to see if checker is empty and if there is something to pop
       {
         temp->checkout(os, clock, i);
         checkers[i]=temp;
-        //customers--;
       }
-      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
+/*      if(checkers[i]!=NULL && checkers[i]->is_time(clock))
       {
         customers--;
         //int cash = register_totals[i];
         checkers[i]->leaving(os, clock, i, register_totals[i]);
         //register_totals[i] = cash + register_totals[i];
         checkers[i]=NULL;
-      }
+      }*/
     }
 //TEST AND SUCH
     cout<<"\narrival:\n";

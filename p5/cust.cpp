@@ -36,20 +36,28 @@ void Cust::done_shop(ostream & os, int clock)
 {
   assert(clock == a_time);
   os << clock <<": "<<name<<" done shopping\n";
-  if(type == "shopper")
+/*  if(type == "shopper")
     a_time = a_time + (2 * items);
   else
     a_time = a_time + 2;
+*/  cout<<name<<" done_shop, a_time "<<a_time<<endl;
 }
 
 void Cust::checkout(ostream & os, int clock, int checker)
 {
+  cout<<name<<" checkout with "<<checker<<endl;
+   if(type == "shopper")
+    a_time = a_time + (2 * items);
+  else
+    a_time = a_time + 2;
   os << clock <<": "<<name<<" started checkout with checker "<<checker<<endl;
+
 }
 
 void Cust::leaving(ostream & os, int clock,int checker, int &cash)
 {
   assert(clock == a_time);
+  cout<<name<<" leaving "<<type<<endl;
   os << clock <<": "<<name;
   if(type == "robber")
   {
@@ -82,7 +90,7 @@ void Cust::leaving(ostream & os, int clock,int checker, int &cash)
 
 bool Cust::is_time(int time)
 {
-  cout<<a_time<<" "<<time<<endl;
+  cout<<name<<" "<<a_time<<" "<<time<<endl;
   if(a_time == time)
     return true;
   else

@@ -79,7 +79,7 @@ void Pqueue::push(Cust *cust)
     m_head= new Node(cust, NULL);
   else
   {
-    for(Node *ptr = m_head; ptr->m_next!=NULL; ptr=ptr->m_next)
+    for(Node *ptr = m_head; ptr!=NULL; ptr=ptr->m_next)
     {
       if (ptr->m_next==NULL)
       {
