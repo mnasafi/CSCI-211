@@ -87,7 +87,7 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
   
   for(int i=0; i<checker; i++)
   {  
-    cout<<"running set for loop "<<i<<endl;
+    //cout<<"running set for loop "<<i<<endl;
     register_totals[i] = 100;
     checkers[i]= NULL;
   }
@@ -147,7 +147,7 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
     checker_q->print();
     cout<<"Num of cust="<<customers<<endl;
     cout<<endl;
-   if(clock>15)
+   if(clock>80)
      break; 
   }
   for(int i=0; i<checker; i++)

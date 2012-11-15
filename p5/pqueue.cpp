@@ -38,7 +38,7 @@ void Pqueue::enque(Cust *cust)
     m_head->m_next= new Node(cust, NULL);
   else 
   {
-    for (Node *current = m_head->m_next; current !=NULL; current = current->m_next)
+    for (Node *current = m_head; current !=NULL; current = current->m_next)
     {
       //cout<<"m_next ="<<current->m_next<<endl;
       if(current->m_next == NULL)
