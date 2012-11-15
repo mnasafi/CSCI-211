@@ -84,9 +84,10 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
   int *register_totals = new int [checker];
   Pqueue *shopping_q = new Pqueue;
   Pqueue *checker_q = new Pqueue;
-
+  
   for(int i=0; i<checker; i++)
   {  
+    cout<<"running set for loop "<<i<<endl;
     register_totals[i] = 100;
     checkers[i]= NULL;
   }
@@ -103,31 +104,34 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
       shopping_q->enque(temp);
       //customers--;
     }
-    
-    if(shopping_q!=NULL)
+    while(Cust *temp=shopping_q->deque(clock))
     {
-      while(Cust *temp=shopping_q->deque(clock))
+      cout<<clock<<": else if shopping\n";
+      temp->done_shop(os, clock);
+      checker_q->push(temp);
+      //customers--;
+    }
+    for(int i=0; i< checker; i++)
+    {
+      cout<<"inside checker for loop\n";
+      Cust *temp=NULL;
+      if(checkers[i]==NULL && (temp=checker_q->pop())!=NULL)
       {
-        cout<<clock<<": else if shopping\n";
-        temp->done_shop(os, clock);
-        checker_q->push(temp);
+        temp->checkout(os, clock, i);
+        checkers[i]=temp;
         customers--;
       }
     }
-    cout<<"Num of cust="<<customers<<endl;
-    /*else if(checker_q!=NULL)
-    {
-      for()
-      if(Cust *temp=checker_q->pop())
-    }*/
-    
-   if(clock>30)
-     break; 
     cout<<"\narrival:\n";
     arrival_q->print();
     cout<<"shopping:\n";
     shopping_q->print();
+    cout<<"Num of cust="<<customers<<endl;
     cout<<endl;
+   if(clock>100)
+     break; 
+ 
+
   }
   
   

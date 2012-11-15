@@ -44,7 +44,6 @@ void Cust::done_shop(ostream & os, int clock)
 
 void Cust::checkout(ostream & os, int clock, int checker)
 {
-  assert(clock == a_time);
   os << clock <<": "<<name<<" started checkout with checker "<<checker<<endl;
 }
 
