@@ -15,8 +15,6 @@ void Cust::print(void)
 bool Cust::arrival(Cust *other)
 {
   //cout<<"in arrival\n current cust="<<name<<" current time="<<a_time<<endl<<"other cust="<<other->name<<" other time="<<other->a_time<<endl;
-
-  
   return a_time > other->a_time;
 }
 
@@ -36,20 +34,16 @@ void Cust::done_shop(ostream & os, int clock)
 {
   assert(clock == a_time);
   os << clock <<": "<<name<<" done shopping\n";
-/*  if(type == "shopper")
-    a_time = a_time + (2 * items);
-  else
-    a_time = a_time + 2;
-*/  cout<<name<<" done_shop, a_time "<<a_time<<endl;
+  //cout<<name<<" done_shop, a_time "<<a_time<<endl;
 }
 
 void Cust::checkout(ostream & os, int clock, int checker)
 {
-  cout<<name<<" checkout with "<<checker<<endl;
+  //cout<<name<<" checkout with "<<checker<<endl;
    if(type == "shopper")
-    a_time = a_time + (2 * items);
+    a_time = clock + (2 * items);
   else
-    a_time = a_time + 2;
+    a_time = clock + 2;
   os << clock <<": "<<name<<" started checkout with checker "<<checker<<endl;
 
 }
@@ -57,19 +51,19 @@ void Cust::checkout(ostream & os, int clock, int checker)
 void Cust::leaving(ostream & os, int clock,int checker, int &cash)
 {
   assert(clock == a_time);
-  cout<<name<<" leaving "<<type<<endl;
+  //cout<<name<<" leaving "<<type<<endl;
   os << clock <<": "<<name;
   if(type == "robber")
   {
-    cout<<"robber cash="<<cash<<endl;
-    os<<"stole $"<<cash<<" and "<<items;
+    //cout<<"robber cash="<<cash<<endl;
+    os<<" stole $"<<cash<<" and "<<items;
     if(items == 1)
       os<<" item ";
     else
       os<<" items ";
     os<<"from checker "<<checker<<endl;
     cash = 0;
-    cout<<"after:"<<cash<<endl;
+    //cout<<"after:"<<cash<<endl;
   }
   else if(type == "shopper")
   {
@@ -90,7 +84,7 @@ void Cust::leaving(ostream & os, int clock,int checker, int &cash)
 
 bool Cust::is_time(int time)
 {
-  cout<<name<<" "<<a_time<<" "<<time<<endl;
+  //cout<<name<<" "<<a_time<<" "<<time<<endl;
   if(a_time == time)
     return true;
   else

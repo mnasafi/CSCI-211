@@ -147,7 +147,7 @@ void run_simulation(Pqueue *arrival_q, int checker, int customers, ostream &os)
     checker_q->print();
     cout<<"Num of cust="<<customers<<endl;
     cout<<endl;
-   if(clock>80)
+   if(clock>15)
      break; 
   }
   for(int i=0; i<checker; i++)
