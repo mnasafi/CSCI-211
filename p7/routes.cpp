@@ -6,8 +6,14 @@
 #include<iostream>
 #include<string>
 #include<assert.h>
-#include<stree.h>
+#include"stree.h"
 
 using namespace std;
+
+int main()
+{
+  
+  return 0;
+}
 
 
