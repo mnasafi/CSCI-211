@@ -16,26 +16,27 @@ class Stree
     class Node
     {
       public:
-        Node(, Node *next)
-         {m_parent = parent;m_left = left;m_right = right; m_city = city; m_distance = distance;}
-        Cust *m_cust;
+        Node(string city, int distance, Node *parent)
+         {m_left = NULL;m_right = NULL; m_city = city; m_distance = distance;}
         Node *m_left;
-        Node *m_left;
+        Node *m_right;
+        Node *m_parent;
+        string m_city;
+        int m_distance;
         
-       // ~Node(){delete m_cust;}
+        ~Node(){delete m_left; delete m_right;}
     };
 
     Node *m_root;
 
   
   public:
-    Pqueue(): m_head(NULL){}
-    void enque(Cust *cust);
-    Cust *deque(int time);
-    void print();
-    void push(Cust *cust);
-    Cust *pop();
-  
+    //bool insert(int value, Node *&cur_root) //not correct for this program
+    //*& is a reference to a pointer to a node, used when the root is empty
+    bool insert(string origin, string destination, int distance);
+    Node find_node(string origin);
+    
+    
 };
 
 #endif
