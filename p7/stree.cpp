@@ -44,17 +44,17 @@ bool Stree::insert(string origin, string destination, int distance)
   return true;
 }
 
-Node *Stree::find_node(string target, Node *cur_root)
+Stree::Node *Stree::find_node(string target, Node *cur_root)
 {
   if(!cur_root)
     return NULL;
   if(cur_root->m_city == target)
     return cur_root;
   
-  Node *left = find_node(target, cur_root->left);
+  Node *left = find_node(target, cur_root->m_left);
   if(left!=NULL)
     return left;
-  return find_node(target, cur_root->right);
+  return find_node(target, cur_root->m_right);
 
 }
 /*
