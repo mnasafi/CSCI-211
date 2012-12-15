@@ -20,14 +20,14 @@ bool Stree::insert(string origin, string destination, int distance)
 //errors  
   if(find_node(origin, m_root) == NULL || find_node(destination, m_root)!=NULL)//origin not found or destination found
   {
-    cerr<<"Error: could not insert "<<origin<<", "<<destination<<endl;
+    //cerr<<"Error: could not insert "<<origin<<", "<<destination<<endl;
     return false;
   }
   if(temp = find_node(origin, m_root))//origin found
   {
     if(temp->m_left!= NULL && temp->m_right != NULL)//node destinations full
     {
-      cerr<<"Error: could not insert "<<origin<<", "<<destination<<endl;
+      //cerr<<"Error: could not insert "<<origin<<", "<<destination<<endl;
       return false;
     }
     if(!temp->m_left)//left destination empty
@@ -57,22 +57,10 @@ Stree::Node *Stree::find_node(string target, Node *cur_root)
   return find_node(target, cur_root->m_right);
 
 }
-/*
-void Stree::print()
-{
-  Node *ptr = m_head;
 
-  if(ptr == NULL)
-    return;
 
-  while(ptr!=NULL)
-  {
-    ptr->m_cust->print();
-    ptr = ptr->m_next;
-  }
-  
-}
 
-*/
+
+
 
 
