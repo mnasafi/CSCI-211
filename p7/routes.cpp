@@ -70,6 +70,7 @@ int main()
             cout<<"none\n";
           else
             cout<<r<<"("<<rd<<")\n";
+        cin.ignore();
       }
 /*    if(command == "remove")
       {

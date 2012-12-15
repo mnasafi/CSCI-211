@@ -17,7 +17,7 @@ class Stree
     {
       public:
         Node(string city, int distance, Node *parent)
-         {m_left = NULL;m_right = NULL; m_city = city; m_distance = distance;}
+         {m_left = NULL;m_right = NULL; m_city = city; m_distance = distance;m_parent = parent;}
         Node *m_left;
         Node *m_right;
         Node *m_parent;
