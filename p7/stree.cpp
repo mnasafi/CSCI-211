@@ -63,7 +63,7 @@ bool Stree::lookup(string target, string &parent, int &parent_distance,
   //if(find_node(target, m_root) == NULL)
     return false;
   
-  parent = temp->m_parent->city;
+  parent = temp->m_parent->m_city;
   parent_distance = temp->m_distance;
   left_child = temp->m_left->m_city;
   left_child_distance = temp->m_left->m_distance;
@@ -81,4 +81,4 @@ bool Stree::remove(target)
 
   
 }
-
+*/

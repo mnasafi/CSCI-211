@@ -35,6 +35,12 @@ class Stree
     //*& is a reference to a pointer to a node, used when the root is empty
     bool insert(string origin, string destination, int distance);
     Node *find_node(string origin, Node *cur_node);
+    bool lookup(string target, string &parent, int &parent_distance, 
+                string &left_child, int &left_child_distance, 
+                string &right_child, int &right_child_distance);
+    //bool distance();
+    //bool path();
+    //bool remove(string target);
     ~Stree()
       {delete m_root;}
     
