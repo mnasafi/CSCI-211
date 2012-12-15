@@ -38,10 +38,11 @@ class Stree
     bool lookup(string target, string &parent, int &parent_distance, 
                 string &left_child, int &left_child_distance, 
                 string &right_child, int &right_child_distance);
-    //bool distance();
-    //bool path();
-    //bool remove(string target);
+    int distance(string origin, string destination);
+    bool path();
+    bool remove(string target);
     Node *see(Node *cur_node);
+    void seetree();
     ~Stree()
       {delete m_root;}
     

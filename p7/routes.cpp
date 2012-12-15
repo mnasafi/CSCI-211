@@ -19,10 +19,15 @@ int main()
   while(cin.peek()!=EOF)
     {
     cin>>command;
-    if(command != "insert" && command != "distance" && command != "lookup" && command != "path" && command != "remove")
+    if(command != "see" && command != "insert" && command != "distance" && command != "lookup" && command != "path" && command != "remove")
     {
        cerr<<"Error: <"<<command<<"> is not a valid command\n";
        cin.ignore();
+    }
+    
+    if(command == "see")
+    {
+      tree.seetree();
     }
     
     if(command == "insert")
@@ -33,13 +38,28 @@ int main()
         {
           cerr<<"Error: could not insert "<<origin<<", " <<destination<<endl;
         }
+      //tree.seetree();
       }
-/*    if(command == "distance")
+    if(command == "distance")
       {
-        if(!tree.distance())
+        cin>>origin>>destination;
+        
+        tree.seetree();
+        
+        if((distance = tree.distance(origin, destination))< 1)
         {
           cerr<<"Error: no path between "<<origin<<" and "<<destination<<endl;
+          cin.ignore();
         }
+        else
+        {
+          cout<<origin<<" to "<<destination<<" is "<<distance;
+          if (distance == 1)
+            cout<<" mile\n";
+          else
+            cout<<" miles\n";
+        }
+        cin.ignore();
       }
     if(command == "path")
       {
@@ -48,7 +68,7 @@ int main()
             cerr<<"Error: no path between "<<origin<<" and "<<destination<<endl;
           }
       }
-*/    if(command == "lookup")
+    if(command == "lookup")
       {
         cin>>target;
         if(!tree.lookup(target, p, pd, l,ld,r,rd))
