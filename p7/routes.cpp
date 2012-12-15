@@ -54,7 +54,22 @@ int main()
         if(!tree.lookup(target, p, pd, l,ld,r,rd))
         {
           cerr<<"Error: "<<target<<" not in tree\n";
+          cin.ignore();
         }
+        else
+          cout<<target<<": ";
+          if(p=="none")
+            cout<<"none, ";
+          else
+            cout<<p<<"("<<pd<<"), ";
+          if(l=="none")
+            cout<<"none, ";
+          else
+            cout<<l<<"("<<ld<<"), ";
+          if(r=="none")
+            cout<<"none\n";
+          else
+            cout<<r<<"("<<rd<<")\n";
       }
 /*    if(command == "remove")
       {

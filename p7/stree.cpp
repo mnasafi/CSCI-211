@@ -62,14 +62,28 @@ bool Stree::lookup(string target, string &parent, int &parent_distance,
   if(!temp)
   //if(find_node(target, m_root) == NULL)
     return false;
-  
-  parent = temp->m_parent->m_city;
-  parent_distance = temp->m_distance;
-  left_child = temp->m_left->m_city;
-  left_child_distance = temp->m_left->m_distance;
-  right_child = temp->m_right->m_city;
-  right_child_distance = temp->m_right->m_distance;
-  
+//  cout<<temp->m_parent->m_city<<endl;
+  if(!temp->m_parent)
+    parent = "none";
+  else
+  {
+    parent = temp->m_parent->m_city;
+    parent_distance = temp->m_distance;
+  }
+  if(!temp->m_left)
+    left_child = "none";
+  else
+  {
+    left_child = temp->m_left->m_city;
+    left_child_distance = temp->m_left->m_distance;
+  } 
+  if(!temp->m_right)
+    right_child = "none";
+  else
+  {
+    right_child = temp->m_right->m_city;
+    right_child_distance = temp->m_right->m_distance;
+  }
   return true;
 }
 
