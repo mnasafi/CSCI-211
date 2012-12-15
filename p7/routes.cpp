@@ -10,8 +10,8 @@ using namespace std;
 
 int main()
 {
-  string origin, destination, target, command;
-  int distance;
+  string origin, destination, target, command, p, l, r;
+  int distance, pd, ld, rd;
   Stree tree;
   
   
@@ -34,7 +34,7 @@ int main()
           cerr<<"Error: could not insert "<<origin<<", " <<destination<<endl;
         }
       }
-    if(command == "distance")
+/*    if(command == "distance")
       {
         if(!tree.distance())
         {
@@ -48,15 +48,15 @@ int main()
             cerr<<"Error: no path between "<<origin<<" and "<<destination<<endl;
           }
       }
-    if(command == "lookup")
+*/    if(command == "lookup")
       {
         cin>>target;
-        if(!tree.lookup())
+        if(!tree.lookup(target, p, pd, l,ld,r,rd))
         {
           cerr<<"Error: "<<target<<" not in tree\n";
         }
       }
-    if(command == "remove")
+/*    if(command == "remove")
       {
         cin>>target;
         if(!tree.remove())
@@ -65,7 +65,7 @@ int main()
         }
  
       }
-        
+*/        
     }
 
   return 0;

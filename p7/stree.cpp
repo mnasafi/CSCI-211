@@ -17,28 +17,23 @@ bool Stree::insert(string origin, string destination, int distance)
   if(!m_root)//tree is empty
     m_root = new Node(origin, 0, NULL); //(city, distance, parent)
 
-//errors  
   if(find_node(origin, m_root) == NULL || find_node(destination, m_root)!=NULL)//origin not found or destination found
   {
-    //cerr<<"Error: could not insert "<<origin<<", "<<destination<<endl;
     return false;
   }
   if(temp = find_node(origin, m_root))//origin found
   {
     if(temp->m_left!= NULL && temp->m_right != NULL)//node destinations full
     {
-      //cerr<<"Error: could not insert "<<origin<<", "<<destination<<endl;
       return false;
     }
     if(!temp->m_left)//left destination empty
     {
       temp->m_left = new Node(destination, distance, temp);
-      //return true;
     }
     else//put it on the right
     {
       temp->m_right = new Node(destination, distance, temp);
-      //return true;
     }
   }
   return true;
@@ -58,9 +53,32 @@ Stree::Node *Stree::find_node(string target, Node *cur_root)
 
 }
 
+bool Stree::lookup(string target, string &parent, int &parent_distance, 
+                   string &left_child, int &left_child_distance,
+                   string &right_child, int &right_child_distance)
+{
+  Node *temp = find_node(target, m_root);
+  
+  if(!temp)
+  //if(find_node(target, m_root) == NULL)
+    return false;
+  
+  parent = temp->m_parent->city;
+  parent_distance = temp->m_distance;
+  left_child = temp->m_left->m_city;
+  left_child_distance = temp->m_left->m_distance;
+  right_child = temp->m_right->m_city;
+  right_child_distance = temp->m_right->m_distance;
+  
+  return true;
+}
 
 
+/*
+bool Stree::remove(target)
+{
+  Node *temp;
 
-
-
+  
+}
 
