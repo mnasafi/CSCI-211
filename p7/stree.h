@@ -41,6 +41,7 @@ class Stree
     //bool distance();
     //bool path();
     //bool remove(string target);
+    Node *see(Node *cur_node);
     ~Stree()
       {delete m_root;}
     

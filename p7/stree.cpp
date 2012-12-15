@@ -13,7 +13,8 @@ using namespace std;
 bool Stree::insert(string origin, string destination, int distance)
 {
   Node *temp;
-  
+  see(m_root);
+  cout<<"out of see\n";
   if(!m_root)//tree is empty
     m_root = new Node(origin, 0, NULL); //(city, distance, parent)
 
@@ -36,6 +37,7 @@ bool Stree::insert(string origin, string destination, int distance)
       temp->m_right = new Node(destination, distance, temp);
     }
   }
+  see(m_root);
   return true;
 }
 
@@ -43,6 +45,8 @@ Stree::Node *Stree::find_node(string target, Node *cur_root)
 {
   if(!cur_root)
     return NULL;
+  cout<<"target: "<<target<<endl;
+  cout<<"current root: "<<cur_root->m_city<<"("<<cur_root->m_distance<<")\n";
   if(cur_root->m_city == target)
     return cur_root;
   
@@ -96,3 +100,34 @@ bool Stree::remove(target)
   
 }
 */
+
+Stree::Node *Stree::see(Node *cur_root)
+{
+  if(!m_root)
+  {
+    cout<<"the tree is empty\n\n";
+    return ;
+  }
+  
+  cout<<"name: "<<cur_root->m_city<<"("<<cur_root->m_distance<<"), parent: ";
+  if(!cur_root->m_parent)
+    cout<<"none, ";
+  else
+    cout<<cur_root->m_parent->m_city<<", ";
+  cout<<"Left child: ";
+  if(!cur_root->m_left)
+    cout<<"none, ";
+  else
+    cout<<cur_root->m_left->m_city<<", ";
+ cout<<"right child: ";
+ if(!cur_root->m_right)
+    cout<<"none\n\n";
+  else
+    cout<<cur_root->m_left->m_city<<"\n\n";
+
+  if(cur_root->m_left)
+    see(cur_root->m_left);
+  else if(cur_root->m_right)
+    see(cur_root->m_right);
+  
+}
