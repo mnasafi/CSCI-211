@@ -12,6 +12,13 @@ using namespace std;
 
 int main()
 {
+  string origin, destination, target, command;
+  int distance;
+  
+  
+  
+  
+  
   
   return 0;
 }
