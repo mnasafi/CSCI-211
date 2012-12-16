@@ -33,7 +33,7 @@ int main()
     if(command == "insert")
       {
         cin>>origin>>destination>>distance;
-        cin.ignore();
+        //cin.ignore();
         if(!tree.insert(origin, destination, distance))
         {
           cerr<<"Error: could not insert "<<origin<<", " <<destination<<endl;
