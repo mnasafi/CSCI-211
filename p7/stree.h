@@ -7,6 +7,7 @@
 
 #include<iostream>
 #include<string>
+#include<vector>
 
 using namespace std;
 
@@ -39,7 +40,7 @@ class Stree
                 string &left_child, int &left_child_distance, 
                 string &right_child, int &right_child_distance);
     int distance(string origin, string destination);
-    bool path();
+    bool path(string origin, string destination, vector <string> &path);
     bool remove(string target);
     Node *see(Node *cur_node);
     void seetree();

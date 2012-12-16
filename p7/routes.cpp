@@ -6,6 +6,7 @@
 #include <string>
 #include "stree.h"
 #include <assert.h>
+#include <vector.h>
 using namespace std;
 
 int main()
@@ -13,6 +14,7 @@ int main()
   string origin, destination, target, command, p, l, r;
   int distance, pd, ld, rd;
   Stree tree;
+  vector<string> tpath;
   
   
   //command
@@ -34,7 +36,7 @@ int main()
       {
         cin>>origin>>destination>>distance;
         //cin.ignore();
-        if(!tree.insert(origin, destination, distance))
+        if(!tree.insert(origin, destination, distance) || distance < 1)
         {
           cerr<<"Error: could not insert "<<origin<<", " <<destination<<endl;
         }
@@ -44,7 +46,7 @@ int main()
       {
         cin>>origin>>destination;
         
-        tree.seetree();
+        //tree.seetree();
         
         if((distance = tree.distance(origin, destination))< 1)
         {
@@ -63,9 +65,24 @@ int main()
       }
     if(command == "path")
       {
-         if(!tree.path())
+         cin>>origin>>destination;
+         
+         if(!tree.path(origin, destination, tpath))
           {
             cerr<<"Error: no path between "<<origin<<" and "<<destination<<endl;
+            cin.ignore();
+          }
+          else
+          {
+            //cout<<tpath.size();
+            cin.ignore();
+            cout<<origin;
+            for(unsigned i = tpath.size(); i > 0; i--)
+            {
+              cout<<" --> "<<tpath[i-1];
+              
+            }
+            cout<<endl;
           }
       }
     if(command == "lookup")

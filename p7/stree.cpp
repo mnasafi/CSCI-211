@@ -6,7 +6,7 @@
 #include "stree.h"
 #include<string>
 #include<assert.h>
-
+#include<vector>
 
 using namespace std;
 
@@ -22,13 +22,13 @@ bool Stree::insert(string origin, string destination, int distance)
     return true;
   }
   
-  cout<<"tree is not empty\n";
+  //cout<<"tree is not empty\n";
   if(find_node(origin, m_root) == NULL)//origin not found
     return false;
   else
     {
       temp_ori = find_node(origin, m_root);//origin found
-      cout<<"origin found: "<<temp_ori->m_city<<endl;;
+      //cout<<"origin found: "<<temp_ori->m_city<<endl;;
     }
   
   if(find_node(destination, m_root)!=NULL)//destination found
@@ -41,13 +41,13 @@ bool Stree::insert(string origin, string destination, int distance)
   if(temp_ori->m_left == NULL)
   {  
     temp_ori->m_left = new Node(destination, distance, temp_ori);
-    cout<<"left empty, inserting "<<temp_ori->m_left->m_city<<endl;
+    //cout<<"left empty, inserting "<<temp_ori->m_left->m_city<<endl;
     return true;
   }
   else if(temp_ori->m_right == NULL)
   {
     temp_ori->m_right = new Node(destination, distance, temp_ori);
-    cout<<"right empty, inserting "<<temp_ori->m_right->m_city<<"under "<<temp_ori->m_city<<endl;
+    //cout<<"right empty, inserting "<<temp_ori->m_right->m_city<<"under "<<temp_ori->m_city<<endl;
     return true;
   }
   else
@@ -61,37 +61,21 @@ Stree::Node *Stree::find_node(string target, Node *cur_root)
 {
   if(!cur_root)
   {
-    cout<<"target not found\n";
+    //cout<<"target not found\n";
     return NULL;
   }
-  cout<<"\ntarget: "<<target<<endl;
-  cout<<"current root: "<<cur_root->m_city<<"("<<cur_root->m_distance<<")\n";
+  //cout<<"\ntarget: "<<target<<endl;
+  //cout<<"current root: "<<cur_root->m_city<<"("<<cur_root->m_distance<<")\n";
   
   if(cur_root->m_city == target)
     return cur_root;
-  cout<<"not in current, check left\n";
+  //cout<<"not in current, check left\n";
   
   Node *left = find_node(target, cur_root->m_left);
   if(left == NULL)
     return find_node(target, cur_root->m_right);
   else
     return left;
-
-/*  if(left!=NULL)
-    {
-    cout<<left->m_city;
-    cout<<"found target on left\n";
-    return left;
-    }
-  cout<<"not in left, check right\n";
-  Node *right = find_node(target, cur_root->m_right);
-  if(right!=NULL)
-  {
-    cout<<"found target on right\n";
-    return right;
-  //return find_node(target, cur_root->m_right);
-  }
-*/
 }
 
 bool Stree::lookup(string target, string &parent, int &parent_distance, 
@@ -143,7 +127,7 @@ int Stree::distance(string origin, string destination)
     return 0;
   while(cur_child != cur_root)
   {
-    distance == cur_child->m_distance + distance;
+    distance = cur_child->m_distance + distance;
     cur_child = cur_child->m_parent;
   }
   
@@ -151,9 +135,24 @@ int Stree::distance(string origin, string destination)
   return distance;
 }
 
-bool Stree::path()
+bool Stree::path(string origin, string destination, vector <string> &path)
 {
+  Node *cur_root = m_root;
+  Node *cur_dest;
+  int i=0;
   
+  path.clear();
+  cur_root = find_node(origin, cur_root);
+  if(!cur_root)
+    return false;
+  cur_dest = find_node(destination, cur_root);
+  if(!cur_dest)
+    return false;
+  while(cur_dest != cur_root)
+  {
+    path.push_back(cur_dest->m_city);
+    cur_dest = cur_dest->m_parent;
+  }
   
   return true;
 }
