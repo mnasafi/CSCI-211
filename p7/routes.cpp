@@ -6,7 +6,8 @@
 #include <string>
 #include "stree.h"
 #include <assert.h>
-#include <vector.h>
+#include <vector>
+#include <cstdio>
 using namespace std;
 
 int main()
@@ -21,10 +22,10 @@ int main()
   while(cin.peek()!=EOF)
     {
     cin>>command;
-    if(command != "see" && command != "insert" && command != "distance" && command != "lookup" && command != "path" && command != "remove")
+    if(command != "nothing" && command != "see" && command != "insert" && command != "distance" && command != "lookup" && command != "path" && command != "remove")
     {
        cerr<<"Error: <"<<command<<"> is not a valid command\n";
-       cin.ignore();
+       cin.ignore(1000,10);
     }
     
     if(command == "see")
@@ -39,6 +40,7 @@ int main()
         if(!tree.insert(origin, destination, distance) || distance < 1)
         {
           cerr<<"Error: could not insert "<<origin<<", " <<destination<<endl;
+          //cout<<"error\n";
         }
       //tree.seetree();
       }
@@ -51,7 +53,7 @@ int main()
         if((distance = tree.distance(origin, destination))< 1)
         {
           cerr<<"Error: no path between "<<origin<<" and "<<destination<<endl;
-          cin.ignore();
+          //cin.ignore();
         }
         else
         {
@@ -94,6 +96,7 @@ int main()
           cin.ignore();
         }
         else
+        {
           cout<<target<<": ";
           if(p=="none")
             cout<<"none, ";
@@ -108,17 +111,19 @@ int main()
           else
             cout<<r<<"("<<rd<<")\n";
         cin.ignore();
+        }
       }
-/*    if(command == "remove")
+    if(command == "remove")
       {
         cin>>target;
-        if(!tree.remove())
+        if(!tree.remove(target))
         {
           cerr<<"Error: could not remove "<<target<<endl;
         }
- 
+        cin.ignore(1000,10);
       }
-*/        
+        
+    command = "nothing";
     }
 
   return 0;

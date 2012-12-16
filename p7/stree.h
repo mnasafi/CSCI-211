@@ -32,8 +32,8 @@ class Stree
 
   
   public:
-    //bool insert(int value, Node *&cur_root) //not correct for this program
-    //*& is a reference to a pointer to a node, used when the root is empty
+    Stree()
+      {m_root=NULL;}
     bool insert(string origin, string destination, int distance);
     Node *find_node(string origin, Node *cur_node);
     bool lookup(string target, string &parent, int &parent_distance, 

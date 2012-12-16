@@ -33,7 +33,7 @@ bool Stree::insert(string origin, string destination, int distance)
   
   if(find_node(destination, m_root)!=NULL)//destination found
   {
-    cout<<"destination found\n";
+    //cout<<"destination found\n";
     return false;
   }
   if(temp_ori->m_left != NULL && temp_ori->m_right != NULL)//has two children
@@ -139,7 +139,6 @@ bool Stree::path(string origin, string destination, vector <string> &path)
 {
   Node *cur_root = m_root;
   Node *cur_dest;
-  int i=0;
   
   path.clear();
   cur_root = find_node(origin, cur_root);
@@ -160,8 +159,26 @@ bool Stree::path(string origin, string destination, vector <string> &path)
 
 bool Stree::remove(string target)
 {
-  //Node *temp;
-
+  Node *cur_target;
+  
+  cur_target = find_node(target, m_root);
+  if(!cur_target)
+    return false;
+  if(cur_target == m_root)
+  {
+    delete cur_target;
+    m_root = NULL;
+  }
+  else
+  {
+    if(cur_target->m_parent->m_left == cur_target)
+      cur_target->m_parent->m_left = NULL;
+    if(cur_target->m_parent->m_right == cur_target)
+      cur_target->m_parent->m_right = NULL;
+    
+    delete cur_target;
+    
+  }
   return true;
 }
 
